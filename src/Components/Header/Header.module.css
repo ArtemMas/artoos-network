@@ -1,0 +1,21 @@
+.header {
+	grid-area: h;
+   background: #2a3144;
+}
+
+.nameNetwork {
+	display: grid;
+
+	grid-template-areas:
+	"img net s l";
+
+	grid-template-columns: 150px 2fr 9fr 2fr;
+}
+
+
+
+.netone {
+	text-decoration: none;
+	color: #ffffff;
+   font-size: 119pt;
+}

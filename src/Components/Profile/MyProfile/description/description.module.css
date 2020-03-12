@@ -1,0 +1,7 @@
+.about {
+   grid-area: desc;
+}
+
+.name {
+   font-size: 30pt;
+}

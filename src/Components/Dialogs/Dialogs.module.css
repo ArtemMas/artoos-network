@@ -1,0 +1,30 @@
+.dialogs {
+   display: grid;
+
+   grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+
+}
+
+.dialog {
+
+}
+
+.names {
+   text-decoration: none;
+   color: #ffffff;
+}
+
+.diaAva {
+   width: 64px;
+   height: 48px;
+   border-radius: 48px;
+}
+
+.messages {
+   display: grid;
+
+   grid-template-rows: 1fr 50px;
+}

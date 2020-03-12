@@ -1,0 +1,18 @@
+.div {
+   grid-area: av;
+}
+
+.img {
+   margin: 10px 10px 10px;
+   width: 108px;
+}
+
+.edit {
+   text-align: center;
+   margin-right: 35px;
+}
+
+.editAva {
+   text-decoration: none;
+   color: #000000;
+}

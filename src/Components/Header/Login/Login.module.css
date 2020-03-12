@@ -1,0 +1,13 @@
+.login {
+	grid-area: l;
+	margin-top: 17px;
+}
+
+.input {
+	border-radius: 10px 10px 10px 10px;
+}
+
+.nav {
+	text-decoration: none;
+	color: #ffffff;
+}

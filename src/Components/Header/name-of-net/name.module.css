@@ -1,0 +1,14 @@
+.net {
+   grid-area: net;
+   margin: 13px;
+   text-decoration: none;
+   font-size: 18pt;
+}
+
+.ar {
+   color: rgb(166, 99, 200);
+}
+
+.nw {
+   color: #ffffff;
+}

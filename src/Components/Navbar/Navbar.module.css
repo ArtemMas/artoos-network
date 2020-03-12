@@ -1,0 +1,15 @@
+.nav {
+	grid-area: n;
+   background: rgb(6, 5, 37);
+	padding: 20px;
+}
+
+.nav_a {
+   font-size: 15pt;
+   color: #ffffff;
+   text-decoration: none;
+}
+
+.nav_a:hover {
+   color: rgb(43, 22, 143);
+}

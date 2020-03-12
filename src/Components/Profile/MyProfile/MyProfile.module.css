@@ -1,0 +1,8 @@
+.prof {
+   display: grid;
+
+   grid-template-areas:
+   "av desc";
+
+   grid-template-columns: 160px 1fr;
+}
