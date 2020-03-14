@@ -14,17 +14,19 @@ import {
     getIsFetching,
     getPageSize,
     getTotalUsersCount,
-    getUsers, getUsersSuperSelector
+    getUsers
 } from "../../Redux/search-selectors";
 
 class SearchPageAPI extends React.Component {
 
    componentDidMount() {
-       this.props.requestUsers(this.props.setCurrentPage ,this.props.pageSize);
+       let {setCurrentPage, pageSize} = this.props;
+       this.props.requestUsers(setCurrentPage, pageSize);
    };
 
    onPageChanged = (pageNumber) => {
-       this.props.requestUsers(pageNumber ,this.props.pageSize)
+       let pageSize = this.props;
+       this.props.requestUsers(pageNumber, pageSize)
    };
 
     render () {
@@ -44,16 +46,6 @@ class SearchPageAPI extends React.Component {
    }
 }
 
-/*let mapStateToProps = (state) => {
-   return {
-      users: state.searchPage.users,
-      pageSize: state.searchPage.pageSize,
-      totalUsersCount: state.searchPage.totalUsersCount,
-      currentPage: state.searchPage.currentPage,
-      isFetching: state.searchPage.isFetching,
-      followingInProgress: state.searchPage.followingInProgress
-   }
-};*/
 
 let mapStateToProps = (state) => {
     return {

@@ -5,17 +5,17 @@ import Description from './description/description.jsx';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
-const MyProfile = (props) => {
+const MyProfile = ({profile, status, updateStatus}) => {
    
-   if (!props.profile) {
+   if (!profile) {
    		return <Preloader />
    }
 
    return (
       <div className={myPr.prof}>
-         <Avatar photo={props.profile.photos} />
-         <Description prof={props.profile} />
-         <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+         <Avatar photo={profile.photos} />
+         <Description prof={profile} />
+         <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
       </div>
    );
 };
