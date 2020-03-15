@@ -9,7 +9,7 @@ const SearchPage = ({currentPage, onPageChanged, totalUsersCount, pageSize, user
    return (
        <div className={se.users}>
           <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-                     totalUsersCount={totalUsersCount} pageSize={pageSize}/>
+                     totalItemsCount={totalUsersCount} pageSize={pageSize}/>
           <div>
              {users.map(u => <User user={u}
                                    followingInProgress={props.followingInProgress}

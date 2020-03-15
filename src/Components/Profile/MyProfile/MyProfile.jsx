@@ -5,7 +5,7 @@ import Description from './description/description.jsx';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
-const MyProfile = ({profile, status, updateStatus}) => {
+const MyProfile = ({profile, status, updateStatus, isOwner, savePhoto}) => {
    
    if (!profile) {
    		return <Preloader />
@@ -13,7 +13,7 @@ const MyProfile = ({profile, status, updateStatus}) => {
 
    return (
       <div className={myPr.prof}>
-         <Avatar photo={profile.photos} />
+         <Avatar photo={profile.photos} isOwner={isOwner} savePhoto={savePhoto} />
          <Description prof={profile} />
          <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
       </div>

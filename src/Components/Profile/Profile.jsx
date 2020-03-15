@@ -9,12 +9,15 @@ const Profile = (props) => {
    return (
       <div>
          <HImage />
-         <MyProfile profile={props.profile} status={props.status}
+         <MyProfile profile={props.profile}
+                    isOwner={props.isOwner}
+                    savePhoto={props.savePhoto}
+                    status={props.status}
                     updateStatus={props.updateStatus} />
          <MyPostsContainer />
       </div>
    );
 
-}
+};
 
 export default Profile;
