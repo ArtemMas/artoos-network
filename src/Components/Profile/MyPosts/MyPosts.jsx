@@ -6,7 +6,8 @@ import AddNewPost from "../../AddForm/AddNewPost";
 
 const MyPosts = React.memo(props=> {
 
-    let postsElements = [...props.posts].reverse().map(p => <Post message={p.message} likes={p.likes}/>);
+    let postsElements = [...props.posts].reverse()
+        .map(p => <Post key={p.id} message={p.message} likes={p.likes}/>);
 
     let addNewPost = (values) => {
         props.addPost(values.newPostText);
