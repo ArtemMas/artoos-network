@@ -16,17 +16,33 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../Redux/search-selectors";
+import {UserType} from "../../Types/types";
 
-class SearchPageAPI extends React.Component {
+type Props = {
+    currentPage: number
+    pageSize: number
+    pageNumber: number
+    isFetching: boolean
+    totalUsersCount: number
+    users: Array<UserType>,
+    followingInProgress: Array<number>
+
+    //onPageChanged: (pageNumber: number) => void
+    follow: () => void
+    unfollow: () => void
+    requestUsers: (currentPage: number, pageSize: number) => void
+}
+
+class SearchPageAPI extends React.Component<Props> {
 
    componentDidMount() {
-       let {setCurrentPage, pageSize} = this.props;
-       this.props.requestUsers(setCurrentPage, pageSize);
+       let {currentPage, pageSize} = this.props;
+       this.props.requestUsers(currentPage, pageSize);
    };
 
-   onPageChanged = (pageNumber) => {
-       let pageSize = this.props;
-       this.props.requestUsers(pageNumber, pageSize)
+   onPageChanged = (pageNumber: number) => {
+       let {pageSize} = this.props;
+       this.props.requestUsers(pageNumber, pageSize);
    };
 
     render () {

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {FC} from 'react';
 import se from './SearchPage.module.css';
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
+import {UserType} from "../../Types/types";
 
-const SearchPage = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
+type Props = {
+    currentPage: number,
+    onPageChanged: () => void,
+    totalUsersCount: number,
+    pageSize: number,
+    users: Array<UserType>,
+    followingInProgress: Array<number>,
+    follow: () => void,
+    unfollow: () => void,
+}
+
+const SearchPage: FC<Props> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
 
 
    return (

@@ -4,21 +4,16 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'samurai-network/auth/GET_CAPTCHA_URL_SUCCESS';
 
-export type InitialStateType = {
-    id: number | null,
-    email: string | null,
-    login: string | null,
-    isAuth: boolean,
-    captchaUrl: string | null
-};
 
 let initialState = {
-    id: null,
-    email: null,
-    login: null,
+    id: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false,
-    captchaUrl: null // if null, then captcha is not required
+    captchaUrl: null as string | null // if null, then captcha is not required
 };
+
+type InitialStateType = typeof initialState;
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -38,7 +33,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
 };
 
 type SetAuthUserDataActionPayloadType = {
-    id: number, email: string, login: string, isAuth: boolean
+    id: number | null, email: string | null, login: string | null, isAuth: boolean
 }
 
 type SetAuthUserDataActionType = {
@@ -46,7 +41,7 @@ type SetAuthUserDataActionType = {
     payload: SetAuthUserDataActionPayloadType
 }
 
-export const setAuthUserData = (id: number, email: string, login: string,
+export const setAuthUserData = (id: number | null, email: string | null, login: string | null,
                                 isAuth: boolean): SetAuthUserDataActionType => ({
     type: SET_USER_DATA,
     payload: {id, email, login, isAuth}
@@ -96,7 +91,7 @@ export const logIn = (login: string, password: string, rememberMe: boolean,
 };
 
 
-export const logOut = () => async (dispatch) => {
+export const logOut = () => async (dispatch: any) => {
     let response = await authAPI.logOut();
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
