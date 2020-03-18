@@ -16,7 +16,13 @@ export const Element = Element => ({input, meta: {error, touched}, ...props}) =>
 export const Textarea = Element('textarea');
 
 export const Input = Element('input');
-
+type Props = {
+    placeholder: string
+    name: string
+    type: string
+    validators: any
+    component: any
+}
 export const createField = (placeholder, name, type, validators, component, props = {}, text = ' ') => (
     <div>
         <Field placeholder={placeholder} name={name} type={type}

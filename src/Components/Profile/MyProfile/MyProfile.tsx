@@ -12,7 +12,7 @@ type Props = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (e: ChangeEvent<HTMLInputElement>) => void
-    saveProfile: (formData: any) => void
+    saveProfile: (profile: ProfileType) => void
 }
 
 const MyProfile: FC<Props> = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {

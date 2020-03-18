@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
 import desc from './description.module.css';
 import ProfileDataForm from "./ProfileDataForm";
-import {ProfileType} from "../../../../Types/types";
+import {FormDataType, ProfileType} from "../../../../Types/types";
 
 type Props = {
     profile: ProfileType
     isOwner: boolean
-    saveProfile: (formData: any) => void
+    saveProfile: (profile: ProfileType) => void
 }
 
 
@@ -23,14 +23,10 @@ const Description: FC<Props> = ({saveProfile, profile, isOwner}) => {
     }
 
     let [editMode, setEditMode] = useState(false);
-    const onSubmit = (formData: any) => {
+    const onSubmit = (formData: FormDataType) => {
         // @ts-ignore
-        saveProfile(formData).then(
-            () => {
-                setEditMode(false);
-            }
-        );
-    };
+        saveProfile(formData).then( () => { setEditMode(false)} )
+    }
 
     const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) => {
         return <div>
