@@ -6,13 +6,13 @@ import {UserType} from "../../Types/types";
 
 type Props = {
     currentPage: number,
-    onPageChanged: () => void,
     totalUsersCount: number,
     pageSize: number,
     users: Array<UserType>,
     followingInProgress: Array<number>,
-    follow: () => void,
-    unfollow: () => void,
+    onPageChanged: (pageNumber: number) => void,
+    follow: (userId: number) => void,
+    unfollow: (userId: number) => void,
 }
 
 const SearchPage: FC<Props> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {

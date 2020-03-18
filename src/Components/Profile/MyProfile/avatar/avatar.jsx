@@ -1,6 +1,6 @@
-import React from 'react';
-import ava from './avatar.module.css';
-import {Link} from 'react-router-dom';
+import React from 'react'
+import ava from './avatar.module.css'
+import {Link} from 'react-router-dom'
 import userPhoto from '../../../../assets/images/user.png'
 
 const Avatar = (props) => {
@@ -9,9 +9,7 @@ const Avatar = (props) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0]);
         }
-    };
-
-    debugger;
+    }
    	return (
       <div className={ava.div}>
          <img className={ava.img} src={props.photo.large || userPhoto}  />
@@ -20,6 +18,6 @@ const Avatar = (props) => {
          <Link to={'/profile/edit'} className={ava.editAva}><div className={ava.edit}>Edit</div></Link>
       </div>
    )
-};
+}
 
-export default Avatar;
+export default Avatar

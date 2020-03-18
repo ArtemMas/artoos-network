@@ -1,18 +1,38 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import desc from './description.module.css';
 import ProfileDataForm from "./ProfileDataForm";
+import {ProfileType} from "../../../../Types/types";
 
-const Description = ({saveProfile, profile, isOwner}) => {
+type Props = {
+    profile: ProfileType
+    isOwner: boolean
+    saveProfile: (formData: any) => void
+}
+
+
+const Description: FC<Props> = ({saveProfile, profile, isOwner}) => {
+
+    type ProfileDataProps = {
+        profile: ProfileType
+        isOwner: boolean
+        goToEditMode: any
+    }
+    type ContactProps = {
+        contactTitle: string
+        contactValue: number
+    }
 
     let [editMode, setEditMode] = useState(false);
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: any) => {
+        // @ts-ignore
         saveProfile(formData).then(
             () => {
                 setEditMode(false);
             }
         );
     };
-    const ProfileData = ({profile, isOwner, goToEditMode}) => {
+
+    const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) => {
         return <div>
             {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
             <div>
@@ -32,17 +52,18 @@ const Description = ({saveProfile, profile, isOwner}) => {
             </div>
             <div>
                 <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
+                // @ts-ignore
                 return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
             })}
             </div>
         </div>
     };
-    const Contact = ({contactTitle, contactValue}) => {
+    const Contact: FC<ContactProps> = ({contactTitle, contactValue}) => {
         return <div className={desc.contact}><b>{contactTitle}</b>: {contactValue}</div>
     };
-
     return ( <div>
         { editMode
+            // @ts-ignore
             ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
             : <ProfileData goToEditMode={() => {setEditMode(true)}} profile={profile} isOwner={isOwner}/>
         } </div>

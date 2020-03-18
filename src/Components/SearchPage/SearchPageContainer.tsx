@@ -1,13 +1,12 @@
-import React from 'react'; 
+import React from 'react'
 import {
-    follow, unfollow, setCurrentPage,
-    requestUsers
-} from '../../Redux/search-reducer';
-import {connect} from 'react-redux';
-import SearchPage from './SearchPage';
-import Preloader from '../common/Preloader/Preloader';
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {compose} from "redux";
+    follow, unfollow, requestUsers
+} from '../../Redux/search-reducer'
+import {connect} from 'react-redux'
+import SearchPage from './SearchPage'
+import Preloader from '../common/Preloader/Preloader'
+import {withAuthRedirect} from "../../hoc/withAuthRedirect"
+import {compose} from "redux"
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -15,23 +14,30 @@ import {
     getPageSize,
     getTotalUsersCount,
     getUsers
-} from "../../Redux/search-selectors";
-import {UserType} from "../../Types/types";
+} from "../../Redux/search-selectors"
+import {UserType} from "../../Types/types"
+import {AppState} from "../../Redux/redux-store"
 
-type Props = {
+type MapStatePropsType = {
     currentPage: number
     pageSize: number
-    pageNumber: number
     isFetching: boolean
     totalUsersCount: number
-    users: Array<UserType>,
+    users: Array<UserType>
     followingInProgress: Array<number>
-
-    //onPageChanged: (pageNumber: number) => void
-    follow: () => void
-    unfollow: () => void
-    requestUsers: (currentPage: number, pageSize: number) => void
 }
+
+type MapDispatchPropsType = {
+    requestUsers: (currentPage: number, pageSize: number) => void
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
+
+type OwnPropsType = {
+    pageTitle: string
+}
+
+type Props = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class SearchPageAPI extends React.Component<Props> {
 
@@ -47,7 +53,8 @@ class SearchPageAPI extends React.Component<Props> {
 
     render () {
 
-      return <div> 
+        return <div>
+            <h2>{this.props.pageTitle}</h2>
             { this.props.isFetching ? <Preloader /> : null }
             <SearchPage totalUsersCount={this.props.totalUsersCount}
                            pageSize={this.props.pageSize}
@@ -63,7 +70,7 @@ class SearchPageAPI extends React.Component<Props> {
 }
 
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppState): MapStatePropsType => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -76,9 +83,11 @@ let mapStateToProps = (state) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps, {
+    // TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultRootState
+    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppState>
+    (mapStateToProps, {
         follow, unfollow,
-        setCurrentPage, requestUsers})
+        requestUsers})
 )(SearchPageAPI)
 
 

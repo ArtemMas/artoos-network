@@ -20,10 +20,10 @@ const Paginator: FC<Props>= ({totalItemsCount, pageSize, currentPage,
         pages.push(i);
     }
 
-    let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = useState(1);
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-    let rightPortionPageNumber = portionNumber * portionSize;
+    let portionCount = Math.ceil(pagesCount / portionSize)
+    let [portionNumber, setPortionNumber] = useState(1)
+    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
+    let rightPortionPageNumber = portionNumber * portionSize
 
     return <div className={cn(pg.paginator)}>
         {portionNumber > 1 &&

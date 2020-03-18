@@ -13,11 +13,12 @@ import Preloader from "./Components/common/Preloader/Preloader";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import store from "./Redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
+import SearchPageContainer from "./Components/SearchPage/SearchPageContainer";
 
 
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsContainer"));
-const SearchPageContainer = React.lazy(() => import("./Components/SearchPage/SearchPageContainer"));
+//const SearchPageContainer = React.lazy(() => import("./Components/SearchPage/SearchPageContainer"));
 
 class App extends Component {
 
@@ -57,7 +58,7 @@ class App extends Component {
                         <Route path='/music'
                                render={() => <Music/>}/>
                         <Route path='/search'
-                               render={withSuspense(SearchPageContainer)}/>
+                               render={() => <SearchPageContainer pageTitle={'People'}/>}/>
                         <Route path='/settings'
                                render={() => <Settings/>}/>
                         <Route path='/login'
@@ -87,4 +88,4 @@ const ArtoosNetworkApp = (props) => {
 </BrowserRouter>
 };
 
-export default  ArtoosNetworkApp;
+export default ArtoosNetworkApp;

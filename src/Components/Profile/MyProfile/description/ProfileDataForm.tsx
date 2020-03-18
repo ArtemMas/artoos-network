@@ -1,10 +1,17 @@
-import React from "react";
+import React, {FC} from "react";
 import desc from './description.module.css';
 import {createField, Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 import style from "../../../common/FormsControls/FormsControls.module.css";
+import {ProfileType} from "../../../../Types/types";
 
-const ProfileDataForm = ({handleSubmit, profile, error}) => {
+type Props = {
+    handleSubmit: () => void
+    profile: ProfileType
+    error: string
+}
+
+const ProfileDataForm: FC<Props> = ({handleSubmit, profile, error}) => {
     return <form onSubmit={handleSubmit}>
         <div><button>save</button></div>
         {error && <div className={style.formSummaryError}>

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 
-class ProfileStatus extends React.Component {
+type Props = {
+    status: string
+    updateStatus: (newStatus: string) => void
+}
+
+type StateType = {
+    editMode: boolean
+    status: string
+}
+
+class ProfileStatus extends React.Component<Props, StateType> {
     // if (!props.profile) {
     //     return <Preloader />
     // }
@@ -24,13 +34,13 @@ class ProfileStatus extends React.Component {
         this.props.updateStatus(this.state.status);
     };
 
-    onStatusChange = (e) => {
+    onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             status: e.currentTarget.value
         })
     };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps: Props, prevState: StateType) {
         debugger
         if (prevProps.status !== this.props.status) {
             this.setState({
