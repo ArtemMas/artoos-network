@@ -3,7 +3,7 @@ import post from './Post.module.css';
 
 type Props = {
     message: string
-    likes: string
+    likes: number
 }
 
 const Post: FC<Props> = ({message, likes}) => {

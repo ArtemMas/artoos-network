@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import myPr from './MyProfile.module.css';
-import Avatar from './avatar/avatar.jsx';
-import Description from './description/description.js';
+import Avatar from './avatar/avatar';
+import Description from './description/description';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import {ProfileType} from "../../../Types/types";

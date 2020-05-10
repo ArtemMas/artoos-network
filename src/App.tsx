@@ -15,6 +15,7 @@ import store from "./Redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
 import SearchPageContainer from "./Components/SearchPage/SearchPageContainer";
 
+type Props = {}
 
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsContainer"));
@@ -22,7 +23,7 @@ const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsCo
 
 class App extends Component {
 
-    catchAllUnhandledErrors = (reason, promise) => {
+    catchAllUnhandledErrors = () => {
         alert("Some error occured");
         //console.error(promiseRejectionEvent);
     };

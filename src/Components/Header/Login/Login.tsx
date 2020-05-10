@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
 import l from './Login.module.css';
 import {NavLink, Redirect} from "react-router-dom";
 
-const Login = (props) => {
+type Props = {
+    prof: {
+        login: null | string
+        isAuth: boolean
+        logOut: () => void
+    }
+}
+
+const Login: FC<Props> = (props) => {
     return (
         <div className={l.login}>
             <div className={l.divInput}>

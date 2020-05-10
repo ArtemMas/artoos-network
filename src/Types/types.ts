@@ -43,3 +43,22 @@ export type FormDataType = {
     rememberMe: boolean | null
     captcha: string
 }
+
+export type DialogType = {
+    id: number
+    name: string
+    img: string
+    map(param: (d: DialogType) => any): DialogType
+}
+
+export type MessageType = {
+    id: number
+    message: string
+    map(param: (m: MessageType) => any): MessageType
+}
+
+export type MessagesPageType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+    newMessageBody: string
+}

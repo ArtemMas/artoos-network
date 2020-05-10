@@ -9,26 +9,23 @@ type Props = {
     saveProfile: (profile: ProfileType) => void
 }
 
+type ProfileData = {
+    profile: ProfileType
+    isOwner: boolean
+    goToEditMode: () => void
+}
 
 const Description: FC<Props> = ({saveProfile, profile, isOwner}) => {
 
-    type ProfileDataProps = {
-        profile: ProfileType
-        isOwner: boolean
-        goToEditMode: any
-    }
-    type ContactProps = {
-        contactTitle: string
-        contactValue: number
-    }
+
 
     let [editMode, setEditMode] = useState(false);
-    const onSubmit = (formData: FormDataType) => {
+    const onSubmit = (formData: ProfileType) => {
         // @ts-ignore
         saveProfile(formData).then( () => { setEditMode(false)} )
     }
 
-    const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) => {
+    const ProfileData: FC<ProfileData> = ({profile, isOwner, goToEditMode}) => {
         return <div>
             {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
             <div>
@@ -54,9 +51,16 @@ const Description: FC<Props> = ({saveProfile, profile, isOwner}) => {
             </div>
         </div>
     };
-    const Contact: FC<ContactProps> = ({contactTitle, contactValue}) => {
+
+    type Contact = {
+        contactTitle: string
+        contactValue: string
+    }
+
+    const Contact: FC<Contact> = ({contactTitle, contactValue}) => {
         return <div className={desc.contact}><b>{contactTitle}</b>: {contactValue}</div>
     };
+
     return ( <div>
         { editMode
             // @ts-ignore

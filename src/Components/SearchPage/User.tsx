@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import se from "./SearchPage.module.css";
 import {NavLink} from "react-router-dom";
 import userPhoto from "../../assets/images/user.png";
+import {UserType} from "../../Types/types";
 
+type Props = {
+    user: UserType
+    followingInProgress: Array<number>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
 
-const User = ({user, followingInProgress, unfollow, follow}) => {
+}
+
+const User: FC<Props> = ({user, followingInProgress, unfollow, follow}) => {
     return (
         <div>
            <span>
@@ -32,7 +40,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
             <span>
                 <span>
                     <div>{user.name}</div>
-                    <div>{user.staus}</div>
+                    <div>{user.status}</div>
                 </span>
                 <span>
                     <div>{'user.location.city'}</div>

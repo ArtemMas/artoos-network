@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 import desc from './description.module.css';
 import {createField, Input, Textarea} from "../../../common/FormsControls/FormsControls";
-import {reduxForm} from "redux-form";
+import {InjectedFormProps, reduxForm} from "redux-form";
 import style from "../../../common/FormsControls/FormsControls.module.css";
-import {ProfileType} from "../../../../Types/types";
+import {FormDataType, ProfileType} from "../../../../Types/types";
 
 type Props = {
     handleSubmit: () => void
@@ -45,6 +45,7 @@ const ProfileDataForm: FC<Props> = ({handleSubmit, profile, error}) => {
     </form>
 };
 
+// @ts-ignore
 const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile'})(ProfileDataForm);
 
 export default ProfileDataFormReduxForm;

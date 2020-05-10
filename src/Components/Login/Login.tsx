@@ -1,9 +1,8 @@
-import React, {FC} from 'react'
+import React, {SFC} from 'react'
 import LoginForm from "../AddForm/LoginForm"
 import {logIn} from "../../Redux/auth-reducer"
-import {connect, DefaultRootState} from "react-redux"
+import {connect} from "react-redux"
 import {AppState} from "../../Redux/redux-store"
-import {FormDataType} from "../../Types/types";
 
 type MapStateProps = {
     captchaUrl: string | null
@@ -13,16 +12,24 @@ type MapDispatchProps = {
     logIn: (login: string, password: string, rememberMe: boolean | null, captcha: string) => void
 }
 
-
 type Props = MapStateProps & MapDispatchProps
 
-const Login: FC<Props> = ({captchaUrl, logIn}) => {
+export type LoginFormValuesType = {
+    captcha: string
+    rememberMe: boolean
+    password: string
+    login: string
+}
+
+
+const Login: SFC<Props> = ({captchaUrl, logIn}) => {
     const onSubmit = (formData: any) => {
         logIn(formData.login, formData.password, formData.rememberMe, formData.captcha);
     };
 
     return <div>
         <h1>Login</h1>
+
         <LoginForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
     </div>
 };
@@ -35,5 +42,5 @@ let mapStateToProps = (state: AppState): MapStateProps => {
 }
 
 // <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State>
-// @ts-ignore
-export default connect<MapStateProps & MapDispatchProps & null & AppState>(mapStateToProps, {logIn} )(Login);
+//@ts-ignore
+export default connect<MapStateProps, MapDispatchProps, null, AppState>(mapStateToProps, {logIn} )(Login);
